@@ -33,5 +33,8 @@ htmlcov/
 *.pyc
 .env
 
+# Temp data
+.postgres_data/
+
 # Ignore Docker Compose override file
 docker-compose.override.yml

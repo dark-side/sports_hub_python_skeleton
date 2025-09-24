@@ -1,12 +1,14 @@
-# Sports-Hub Application Back-End
+# Sports-Hub Application Python Back-End
 
 ## Project Description
 
-This is a draft pet project for testing Generative AI on different software engineering tasks. It is planned to evolve and grow over time. Specifically, this repo will be a Python & FastAPI playground. As for now, we only have the React.js application as a front-end, but in the future, we plan to extend it to other technologies. The application's legend is based on the sports-hub application description from the following repo: [Sports-Hub](https://github.com/dark-side/sports-hub).
+This is a draft pet project for testing Generative AI on different software engineering tasks. It is planned to evolve and grow over time. Specifically, this repo will be a Python & FastAPI playground.
+
+The application's legend is based on the sports-hub application description from the following repo: [Sports-Hub](https://github.com/dark-side/sports-hub).
 
 ## Available Front-End applications
-
-- [React.js](https://github.com/rtriska/reactjs_fe_genai_plgrnd)
+- [React.js](https://github.com/dark-side/sports_hub_react_skeleton)
+- [Angular](https://github.com/dark-side/sports_hub_angular_skeleton)
 
 ## Dependencies
 
@@ -22,20 +24,33 @@ The mentioned dependencies can be installed using the official documentation [he
 To run the web application with the React front-end, clone the following repositories within the same folder:
 
 ```sh
-git clone git@github.com:rtriska/ruby_be_genai_plgrnd.git
-git clone git@github.com:rtriska/reactjs_fe_genai_plgrnd.git
-git clone git@github.com:rkoruk/api_docs_genai_plgrnd.git
+git clone git@github.com:dark-side/sports_hub_python_skeleton.git
+git clone git@github.com:dark-side/sports_hub_react_skeleton.git
 ```
+
+### Navigate to the back-end application directory
+
+All commands should be run from the `sports_hub_python_skeleton` directory.
+
+### Create .env File
+
+Copy the .env.example file to .env in the root of the project directory:
+
+```sh
+cp .env.example .env
+```
+
+Update the .env file with your local development credentials and secrets. Make sure not to commit this .env file to version control. 
 
 ### Run Docker Compose
 
-Navigate to the back-end application directory and run:
+Navigate to the back-end application directory and run (`-d` for detached mode to run in the background):
 
 ```sh
-docker compose up
+docker compose up -d
 ```
 
-### Attach to the Backend Container
+### Attach to the Backend Container (Optionally)
 
 Run `docker ps` and copy the `backend` application container ID. Then, connect to the container with the following command:
 
@@ -85,21 +100,6 @@ To access the application in a browser locally, open the following URL:
 - Mac, Linux - `http://localhost:3000/`
 - Windows - `http://127.0.0.1:3000/`
 
-## License
-
-Licensed under either of
-
-- [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-- [MIT license](http://opensource.org/licenses/MIT)
-
-Just to let you know, at your option.
-
-## Contribution
-
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in your work, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
-
-**Should you have any suggestions, please create an Issue for this repository**
-
 ### Local development environment setup
 
 0. Python 3.12
@@ -124,3 +124,18 @@ pytest tests/
 ruff format api/ tests/
 ruff check api/ tests/ --fix
 ```
+
+## License
+
+Licensed under either of
+
+- [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+- [MIT license](http://opensource.org/licenses/MIT)
+
+Just to let you know, at your option.
+
+## Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in your work, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+
+**Should you have any suggestions, please create an Issue for this repository**
