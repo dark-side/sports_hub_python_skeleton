@@ -16,6 +16,7 @@ The application's legend is based on the sports-hub application description from
 - Docker Compose
 
 The mentioned dependencies can be installed using the official documentation [here](https://docs.docker.com/compose/install/).
+Read more about alternatives to Docker [here](https://github.com/dark-side/sports_hub_angular_skeleton/blob/main/READMORE_DockerAlternatives.md).
 
 ## Setup and Running the Application
 
