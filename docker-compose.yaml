@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=${API_DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${API_DB_PASSWORD:-postgres}
+      - POSTGRES_DB=${API_DB_NAME:-postgres}
+    env_file:
+      - .env
+    ports:
+      - "${API_DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # wait for postgres to be ready
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${API_DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ../sports_hub_react_skeleton
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    restart: always
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
+  
