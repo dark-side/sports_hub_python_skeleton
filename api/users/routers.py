@@ -8,10 +8,12 @@ from api.users import schemas
 from api.users.dependencies import get_user_manager
 from api.users.manager import UserManager
 
+registration_router = APIRouter()
+
 router = APIRouter()
 
 
-@router.post("/registrations", response_model=schemas.UserRegistrationResponse)
+@registration_router.post("/registrations", response_model=schemas.UserRegistrationResponse)
 async def create_user(
     payload: schemas.UserRegistrationRequest,
     user_manager: Annotated[UserManager, Depends(get_user_manager)],
