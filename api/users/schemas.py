@@ -1,13 +1,8 @@
-"""User's API DTOs."""
+"""User schemas."""
 
-from typing import Self
+from datetime import datetime
 
-from pydantic import (
-    BaseModel,
-    ConfigDict,
-    EmailStr,
-    model_validator,
-)
+from pydantic import BaseModel, ConfigDict, EmailStr, field_validator
 
 
 class UserRegistration(BaseModel):
@@ -17,12 +12,13 @@ class UserRegistration(BaseModel):
     password: str
     password_confirmation: str
 
-    @model_validator(mode="after")
-    def validate_password_confirmation(self) -> Self:
-        """Validate password confirmation."""
-        if self.password != self.password_confirmation:
+    @field_validator("password_confirmation")
+    @classmethod
+    def passwords_match(cls, v: str, info) -> str:
+        """Validate that passwords match."""
+        if "password" in info.data and v != info.data["password"]:
             raise ValueError("Passwords do not match")
-        return self
+        return v
 
 
 class UserRegistrationRequest(BaseModel):
@@ -38,3 +34,16 @@ class UserRegistrationResponse(BaseModel):
 
     id: int
     email: EmailStr
+    created_at: datetime
+    updated_at: datetime
+
+
+class UserResponse(BaseModel):
+    """User response DTO."""
+    
+    model_config = ConfigDict(from_attributes=True)
+    
+    id: int
+    email: EmailStr
+    created_at: datetime
+    updated_at: datetime
