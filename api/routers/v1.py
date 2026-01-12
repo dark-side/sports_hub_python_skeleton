@@ -9,7 +9,7 @@ from api.auth.routers import router as auth_router
 from api.users.routers import router as user_router
 
 router = APIRouter()
-router.include_router(user_router, prefix="/users")
+router.include_router(user_router, prefix="/api/users")
 router.include_router(auth_router, prefix="/api/auth")
 router.include_router(article_router, prefix="/api/articles")
 
